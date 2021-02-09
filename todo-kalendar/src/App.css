@@ -1,0 +1,39 @@
+.btn{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.modal-content{
+    padding:20px;
+}
+
+.form-label{
+    padding-top: 5px;
+}
+
+.rw-calendar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.styles_time_table_wrapper__1-rtp{
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.App{
+    padding-top: 10px;
+}
+
+.styles_hour__EXCif{
+    background-color: #70b1fc;
+}
+
+.styles_day_title__1y-BE{
+    background-color: #007bff
+}
+
+.errormsg{
+    color:'red';
+    font-size: 15px;
+}

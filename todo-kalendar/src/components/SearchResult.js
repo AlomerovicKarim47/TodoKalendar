@@ -29,7 +29,7 @@ export default withRouter(class SearchResult extends Component {
                 id={"result" + this.props.event.id}
                 style = {{
                 height:'115px', 
-                backgroundColor:this.props.event.boja,
+                backgroundColor: this.props.event.gotov === '1'?'grey': this.props.event.boja,
                 padding:'10px',
                 marginTop:'7px',
                 fontSize:'20px',
@@ -41,13 +41,19 @@ export default withRouter(class SearchResult extends Component {
                 onClick = {() => this.setState({selected:!this.state.selected})}
                 >
                 <div style = {{display:'block', float:'left'}}>
-                {this.props.event.naziv}<br/>
+                {this.props.event.naziv} {this.props.event.gotov === '1'?"(GOTOVO)":""} <br/>
                 {this.props.event.datum}<br/>
                 {this.props.event.pocetak + "-" + this.props.event.kraj}
                 </div>
                 
                 <Button 
-                    onClick = {() => {this.props.goToEvent(this.props.event); this.props.history.push('/home')}}
+                    onClick = {() => {
+                        this.props.goToEvent(this.props.event); 
+                        this.props.history.push('/x')
+                        this.props.history.goBack()
+                        this.props.closeModal("search")
+                        
+                    }}
                     style = {{float:'right', visibility:this.state.selected?'visible':'hidden'}}>Idi na zadatak</Button>
 
             </div>

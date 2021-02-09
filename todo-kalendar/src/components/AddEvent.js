@@ -109,9 +109,9 @@ export default class DodajEvent extends Component {
         let newEvent = this.state.event
         newEvent[att] = value 
         this.setState({event:newEvent})
-        if (this.props.eventToEdit)
+        if (this.props.eventToEdit) 
             this.props.eventToEdit[att] = value
-        if (att == "pocetak" || att == "kraj")
+        if (att === "pocetak" || att === "kraj")
             this.setState({[att + "Error"]:"", prijeError:""})
         else
             this.setState({[att + "Error"]:""})
@@ -157,7 +157,7 @@ export default class DodajEvent extends Component {
                         </div>
                     </Col>
                     <Col xs = 'auto'>
-                        <Link onClick = {() => this.setState({showYesNo:true, katForDelete:kat.data.id})} hidden={kat.label ==="Bez kategorije"}>x</Link>
+                        <Link style = {{color:'black', textDecoration:'bold', fontSize:'15px'}} onClick = {() => this.setState({showYesNo:true, katForDelete:kat.data.id})} hidden={kat.label ==="Bez kategorije"}>briši</Link>
                     </Col>
                 </Row>
             </components.Option>   
@@ -172,7 +172,7 @@ export default class DodajEvent extends Component {
         if (this.props.eventToEdit)
             event = this.props.eventToEdit
         
-        if (event.pocetak == "" || event.kraj == "")
+        if (event.pocetak === "" || event.kraj === "")
             return diff
         
         let start = moment(event.pocetak, 'HH:mm')

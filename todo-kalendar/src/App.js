@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-widgets/dist/css/react-widgets.css";
 import Home from './components/Home';
-import Search from './components/Search'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css'
 import Login from './components/Login'
@@ -51,13 +50,13 @@ export default class App extends Component {
             )}/>
 
             <Route path = '/home' exact render = {props => 
-                (<Home {...props} eventToGoTo = {this.state.eventToGoTo} userInfo = {this.state.userInfo} onLogout = {() => this.onLogout()} 
-                clearEvent = {() => this.clearEvent()}/>)
-            }/>
-            
-            <Route path = '/search' render = {props => 
-                (<Search {...props} goToEvent = {(ev) => this.goToEvent(ev)} userInfo = {this.state.userInfo}/>)
-            }/>    
+                (<Home {...props} 
+                    eventToGoTo = {this.state.eventToGoTo} 
+                    userInfo = {this.state.userInfo} 
+                    onLogout = {() => this.onLogout()}
+                    goToEvent = {(ev) => this.goToEvent(ev)} 
+                    clearEvent = {() => this.clearEvent()}/>)
+            }/>  
         </div>
     </Router>
     )}

@@ -16,7 +16,7 @@ export default class Import extends Component {
                 <Modal
                     show = {this.props.show}>
                         <Form.Group>
-                    <Form.Label className='prompt'>Zalijepite import kod:</Form.Label>
+                    <Form.Label className='prompt'>Zalijepite import kod zadatka:</Form.Label>
                     <Form.Control type="text" onChange={(e)=>this.setState({importCode:e.target.value})}/>
                     <Form.Label style = {this.errorStyle} hidden = {this.state.error === ""}>{this.state.error}</Form.Label>
                     </Form.Group>

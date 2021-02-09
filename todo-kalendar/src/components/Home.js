@@ -10,6 +10,7 @@ import Share from '../components/Share'
 import Import from '../components/Import'
 import ToastAlert from '../components/ToastAlert'
 import Dane from '../components/Dane'
+import Search from '../components/Search'
 
 export default class Home extends Component {
 
@@ -31,7 +32,8 @@ export default class Home extends Component {
         showYesNo:false,
         showImportAlert:false,
         importMessage:"Zadatak importovan.",
-        showFilterAlert:false
+        showFilterAlert:false,
+        showSearch: false
     }
 
     onFilterChange = (filters)=>{
@@ -133,7 +135,7 @@ export default class Home extends Component {
         }
     }
 
-    async componentDidMount(){
+    onMount = async() => {
         let selEv = null
         if (this.props.eventToGoTo)
             selEv = this.props.eventToGoTo.id
@@ -176,6 +178,10 @@ export default class Home extends Component {
         }, 1000);
     }
 
+    async componentDidMount(){
+        this.onMount()
+    }
+
     openModal = (modal) => {
         if (modal === 'novi')
             this.setState({showDodajNovi:true})
@@ -187,8 +193,10 @@ export default class Home extends Component {
             this.setState({showShare:true})
         else if (modal === 'import')
             this.setState({showImport:true})
-            else if (modal === 'yesno')
+        else if (modal === 'yesno')
             this.setState({showYesNo: true})
+        else if (modal === 'search')
+            this.setState({showSearch: true})
     }
 
     closeModal = (modal) => {
@@ -205,6 +213,10 @@ export default class Home extends Component {
             this.setState({showImport:false})
         else if (modal === 'yesno')
             this.setState({showYesNo: false})
+        else if (modal === 'search')
+        {
+            this.setState({showSearch: false})
+        }
     }
 
     addEvent = async (ev) => {
@@ -241,6 +253,13 @@ export default class Home extends Component {
         if (!this.props.userInfo)return(<div>Unauthorized.</div>)
         return (
             <div>
+                <Search 
+                    show = {this.state.showSearch} 
+                    closeModal = {(modal) => this.closeModal(modal)}
+                    userInfo = {this.props.userInfo}
+                    goToEvent = {(ev) => this.props.goToEvent(ev)}
+                    onMount = {() => this.onMount()}
+                    />
                 <Dane 
                     text = {"Jeste li sigurni da želite obrisati ovaj zadatak?"}
                     show = {this.state.showYesNo}
@@ -301,6 +320,9 @@ export default class Home extends Component {
                                 onDelete = {() => {this.setState({showYesNo:true})}}
                                 onEdit = {() => this.onEdit()}
                                 onLogout = {() => this.props.onLogout()}
+                                openSearch = {() => this.setState({showSearch:true})}
+                                filters = {this.state.filters}
+                                kategorije = {this.state.kategorije}
                             />
                         </Col>
                         <Col style = {{paddingLeft:'0px'}}>                        

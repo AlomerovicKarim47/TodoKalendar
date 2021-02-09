@@ -53,14 +53,15 @@ export default class EventTable extends Component {
                         </Col>
                         </Row>
                 </Container>
-                        <Timetable 
-                            events = {this.props.events}
-                            timeLabel = "Vrijeme"
-                            hoursInterval = {[0, 24]}
-                            getDayLabel = {this.renderDayLabel}
-                            renderEvent = {this.renderEvent}
-                        />
-                    
+                
+                <Timetable 
+                    events = {this.props.events}
+                    timeLabel = "Vrijeme"
+                    hoursInterval = {[0, 24]}
+                    getDayLabel = {this.renderDayLabel}
+                    renderEvent = {this.renderEvent}
+                />
+                
             </div>
         )
     }

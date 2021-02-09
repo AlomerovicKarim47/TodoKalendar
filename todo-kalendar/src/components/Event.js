@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Overlay, Tooltip, OverlayTrigger} from 'react-bootstrap'
+import {Overlay} from 'react-bootstrap'
 import moment from 'moment'
 
 export default class Event extends Component {

@@ -37,3 +37,8 @@
     color:'red';
     font-size: 15px;
 }
+
+.help-modal {
+    width: 40vw ;
+    max-width: 90vw;
+} 

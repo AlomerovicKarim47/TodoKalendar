@@ -10,7 +10,7 @@ export default withRouter(class Sidebar extends Component {
         return (
             <div style = {{marginTop:'-10px'}}>
                 
-                <Calendar views = {['month']} 
+                <Calendar 
                     defaultValue={new Date()}
                     onChange={value => this.props.onDateChange(value)}
                 />   
@@ -51,6 +51,11 @@ export default withRouter(class Sidebar extends Component {
                     onClick={()=>this.props.openModal('import')}>
                     Import
                 </Button>        
+                <Button
+                    block
+                    onClick={()=>this.props.openModal("help")}>
+                    Pomoć
+                </Button>
                 <Button 
                     block
                     onClick={()=>{this.props.onLogout(); this.props.history.push('/')}}>

@@ -11,6 +11,7 @@ import Import from '../components/Import'
 import ToastAlert from '../components/ToastAlert'
 import Dane from '../components/Dane'
 import Search from '../components/Search'
+import Help from '../components/Help'
 
 export default class Home extends Component {
 
@@ -33,7 +34,8 @@ export default class Home extends Component {
         showImportAlert:false,
         importMessage:"Zadatak importovan.",
         showFilterAlert:false,
-        showSearch: false
+        showSearch: false,
+        showHelp:false
     }
 
     onFilterChange = (filters)=>{
@@ -197,6 +199,8 @@ export default class Home extends Component {
             this.setState({showYesNo: true})
         else if (modal === 'search')
             this.setState({showSearch: true})
+        else if (modal === 'help')
+            this.setState({showHelp: true})
     }
 
     closeModal = (modal) => {
@@ -214,9 +218,10 @@ export default class Home extends Component {
         else if (modal === 'yesno')
             this.setState({showYesNo: false})
         else if (modal === 'search')
-        {
             this.setState({showSearch: false})
-        }
+        else if (modal === 'help')
+            this.setState({showHelp: false})
+        
     }
 
     addEvent = async (ev) => {
@@ -253,6 +258,9 @@ export default class Home extends Component {
         if (!this.props.userInfo)return(<div>Unauthorized.</div>)
         return (
             <div>
+                <Help 
+                    show = {this.state.showHelp} 
+                    closeModal = {() => this.closeModal("help")}/>
                 <Search 
                     show = {this.state.showSearch} 
                     closeModal = {(modal) => this.closeModal(modal)}

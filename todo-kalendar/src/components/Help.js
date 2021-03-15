@@ -16,7 +16,7 @@ export default class Help extends Component {
                         <h4>Nazad i naprijed</h4>
                         <h5>Pomjera kalendar za jedan dan u budućnost ili prošlost.</h5>
                         <h4>Zadatak</h4>
-                        <h5>Predstavljen je cetveroiglom raspona od svog početnog do svog krajnjeg vremena na vremenskoj crti. Zadatak selektujemo klikom na njega. Klikom na check box u gornjem desnom uglu zadatka
+                        <h5>Predstavljen je cetverouglom raspona od svog početnog do svog krajnjeg vremena na vremenskoj crti. Zadatak selektujemo klikom na njega. Klikom na check box u gornjem desnom uglu zadatka
                             taj zadatak označavamo gotovim ili ne gotovim.
                         </h5>
 
@@ -53,7 +53,7 @@ export default class Help extends Component {
                         <h4>Dodavanje kategorije</h4>
                         <h5>Vrši se klikom na Dodaj ili Izmjeni i klikom na + dugme pored polja za biranje kategorije. Otvara se dijalog gdje unosite naziv nove kategorije.</h5>
                         <h4>Brisanje kategorije</h4>
-                        <h5>Vrši se klikom na "x" pored naziva kategorije u drop down meniju polja za odabir kategorije.</h5>
+                        <h5>Vrši se klikom na "briši" pored naziva kategorije u drop down meniju polja za odabir kategorije.</h5>
                     </div>
                     <Button onClick = {() => this.props.closeModal("help")}>Nazad</Button>
                 </Modal>

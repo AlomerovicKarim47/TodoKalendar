@@ -12,7 +12,7 @@ const createDb = async () =>{
         
         //const connection = new Sequelize(`postgres://${CONFIG.db.USER}:${CONFIG.db.PASS}@${CONFIG.db.HOST}:${CONFIG.db.PORT}/template1`, {logging:false})
         const sequelize = new Sequelize(CONFIG.connectionString, {logging: false})
-           
+        console.log(CONFIG.connectionString);   
     /*try{   
         await connection.query(`CREATE DATABASE ${CONFIG.db.NAME} WITH OWNER = ${CONFIG.db.USER} ENCODING = 'UTF8'`)
     }catch{

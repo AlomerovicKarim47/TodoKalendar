@@ -50,7 +50,7 @@ export default withRouter(class Login extends Component {
 
                     <div class="content">
 
-                        <h3>Prijava</h3>
+                        <h3>Prijava test promjene</h3>
                         <hr />
                         <Form.Label style = {this.errorStyle} hidden = {this.state.credentialError === ""}>{this.state.credentialError}</Form.Label>
                         <form>

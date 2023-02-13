@@ -1,4 +1,5 @@
 import axios from 'axios'
+import CONFIG from '../config/config'
 
 class EventService{
 
@@ -12,7 +13,7 @@ class EventService{
 
     async addEvent(event){
         try {
-            await axios.post("http://localhost:4000/event", event, {headers:this.headers})
+            await axios.post(CONFIG.BACKEND_URL + "/event", event, {headers:this.headers})
         } catch (error) {
             throw error
         }
@@ -28,7 +29,7 @@ class EventService{
                     params += kats[i]+ ","
                 params += kats[kats.length - 1]
             }
-            let events = await axios.get("http://localhost:4000/events/"+today+params, {headers:this.headers})
+            let events = await axios.get(CONFIG.BACKEND_URL + "/events/"+today+params, {headers:this.headers})
             return events
         }
         catch(error){
@@ -38,7 +39,7 @@ class EventService{
 
     async deleteEvent(event){
         try {
-            await axios.delete("http://localhost:4000/event/" + event,{headers:this.headers})
+            await axios.delete(CONFIG.BACKEND_URL + "/event/" + event,{headers:this.headers})
         } catch (error) {
             throw error
         }
@@ -46,7 +47,7 @@ class EventService{
 
     async editEvent(event){
         try {
-            await axios.put("http://localhost:4000/event", event,{headers:this.headers})
+            await axios.put(CONFIG.BACKEND_URL + "/event", event,{headers:this.headers})
         } catch (error) {
             throw error
         }
@@ -54,7 +55,7 @@ class EventService{
 
     async getEvent(id){
         try {
-            let event = await axios.get("http://localhost:4000/event/" + id,{headers:this.headers})
+            let event = await axios.get(CONFIG.BACKEND_URL + "/event/" + id,{headers:this.headers})
             return event
         } catch (error) {
             throw error
@@ -63,7 +64,7 @@ class EventService{
 
     async getKategorije(){
         try {
-            let kategorije = await axios.get("http://localhost:4000/kategorije",{headers:this.headers})
+            let kategorije = await axios.get(CONFIG.BACKEND_URL + "/kategorije",{headers:this.headers})
             return kategorije
         } catch (error) {
             throw error
@@ -72,7 +73,7 @@ class EventService{
 
     async addKategorija(kat){
         try {
-            await axios.post("http://localhost:4000/kategorija", kat,{headers:this.headers})
+            await axios.post(CONFIG.BACKEND_URL + "/kategorija", kat,{headers:this.headers})
         } catch (error) {
             throw error
         }
@@ -80,7 +81,7 @@ class EventService{
 
     async toggleGotov(id){
         try {
-            await axios.put("http://localhost:4000/event/" + id,null, {headers:this.headers})
+            await axios.put(CONFIG.BACKEND_URL + "/event/" + id,null, {headers:this.headers})
         } catch (error) {
             throw error
         }
@@ -88,7 +89,7 @@ class EventService{
 
     async searchEvents(term){
         try {
-            let events = await axios.get("http://localhost:4000/searchEvents/" + term,{headers:this.headers})
+            let events = await axios.get(CONFIG.BACKEND_URL + "/searchEvents/" + term,{headers:this.headers})
             return events
         } catch (error) {
             throw error
@@ -97,7 +98,7 @@ class EventService{
 
     async login(creds){
         try {
-            let info = await axios.post("http://localhost:4000/login", creds,{headers:this.headers})
+            let info = await axios.post(CONFIG.BACKEND_URL + "/login", creds,{headers:this.headers})
             return info.data
         } catch (error) {
             throw error
@@ -106,7 +107,7 @@ class EventService{
 
     async register(user){
         try {
-            await axios.post("http://localhost:4000/register", user, {headers:this.headers})
+            await axios.post(CONFIG.BACKEND_URL + "/register", user, {headers:this.headers})
         } catch (error) {
             throw error
         }
@@ -114,7 +115,7 @@ class EventService{
 
     async shareEvent(id){
         try {
-            let shareCode = await axios.get("http://localhost:4000/share/"+id, {headers:this.headers})
+            let shareCode = await axios.get(CONFIG.BACKEND_URL + "/share/"+id, {headers:this.headers})
             return shareCode.data
         } catch (error) {
             throw error
@@ -123,7 +124,7 @@ class EventService{
 
     async getSharedEvent(code){
         try {
-            let event = await axios.get("http://localhost:4000/sharedEvent/"+code, {headers:this.headers})
+            let event = await axios.get(CONFIG.BACKEND_URL + "/sharedEvent/"+code, {headers:this.headers})
             return event.data
         } catch (error) {
             throw error
@@ -132,7 +133,7 @@ class EventService{
 
     async deleteKategorija(kat){
         try {
-            await axios.delete("http://localhost:4000/kategorija/" + kat, {headers:this.headers})
+            await axios.delete(CONFIG.BACKEND_URL + "/kategorija/" + kat, {headers:this.headers})
         } catch (error) {
             throw error
         }

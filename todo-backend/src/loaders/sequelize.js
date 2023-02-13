@@ -10,14 +10,14 @@ const createDb = async () =>{
     try {
         const database = {}
         
-        const connection = new Sequelize(`postgres://${CONFIG.db.USER}:${CONFIG.db.PASS}@${CONFIG.db.HOST}:${CONFIG.db.PORT}/template1`, {logging:false})
-        const sequelize = new Sequelize(`postgres://${CONFIG.db.USER}:${CONFIG.db.PASS}@${CONFIG.db.HOST}:${CONFIG.db.PORT}/${CONFIG.db.NAME}`, {logging: false})
+        //const connection = new Sequelize(`postgres://${CONFIG.db.USER}:${CONFIG.db.PASS}@${CONFIG.db.HOST}:${CONFIG.db.PORT}/template1`, {logging:false})
+        const sequelize = new Sequelize(CONFIG.connectionString, {logging: false})
            
-        try{   
-            await connection.query(`CREATE DATABASE ${CONFIG.db.NAME} WITH OWNER = ${CONFIG.db.USER} ENCODING = 'UTF8'`)
-        }catch{
-            //DO NOTHING
-        }
+    /*try{   
+        await connection.query(`CREATE DATABASE ${CONFIG.db.NAME} WITH OWNER = ${CONFIG.db.USER} ENCODING = 'UTF8'`)
+    }catch{
+        //DO NOTHING
+    }*/
 
         database.Sequelize = Sequelize
         database.sequelize = sequelize

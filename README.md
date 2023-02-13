@@ -1,10 +1,7 @@
-# TodoKalendar
+# TodoKalendar (https://todokalendar.onrender.com)
 Project for a subject called Human-Computer Interaction
 
-## How to run
-
-##Go to https://todokalendar.onrender.com
-
+## How to run locally
 
 ##Or
 1) Make sure you have mysql installed and within it a user account with root/root username/password

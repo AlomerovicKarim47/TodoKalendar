@@ -1,5 +1,5 @@
 const CONFIG = {
-    BACKEND_URL: "http://localhost:4000"
+    BACKEND_URL: "https://todoback.onrender.com"
 }
 
 export default CONFIG

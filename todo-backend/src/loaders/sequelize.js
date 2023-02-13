@@ -3,22 +3,21 @@ import Event from '../models/Event'
 import Kategorija from '../models/Kategorija'
 import User from '../models/User'
 import Share from '../models/Share'
-import mysql from 'mysql2/promise'
+import CONFIG from '../config/config'
 
 const createDb = async () =>{
     
     try {
         const database = {}
-        const connection = await mysql.createConnection({
-            host: 'localhost',
-            port: 3306,
-            user: 'root',
-            password: 'root'
-        })
         
-        await connection.query('CREATE DATABASE IF NOT EXISTS todokalendar')
-        console.log("Created the databse.")
-        const sequelize = new Sequelize("mysql://root:root@localhost:3306/todokalendar", { logging: false })
+        const connection = new Sequelize(`postgres://${CONFIG.db.USER}:${CONFIG.db.PASS}@${CONFIG.db.HOST}:${CONFIG.db.PORT}/template1`, {logging:false})
+        const sequelize = new Sequelize(`postgres://${CONFIG.db.USER}:${CONFIG.db.PASS}@${CONFIG.db.HOST}:${CONFIG.db.PORT}/${CONFIG.db.NAME}`, {logging: false})
+           
+        try{   
+            await connection.query(`CREATE DATABASE ${CONFIG.db.NAME} WITH OWNER = ${CONFIG.db.USER} ENCODING = 'UTF8'`)
+        }catch{
+            //DO NOTHING
+        }
 
         database.Sequelize = Sequelize
         database.sequelize = sequelize

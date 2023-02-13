@@ -7,7 +7,7 @@ const addEvent = async (req, res, next) => {
     let event = req.body
     let user = req.userInfo
     try{
-        await dataAccess.addEvent({...event, user:user.id})
+        await dataAccess.addEvent({...event, user:user.username})
         res.end()
     }
     catch(error){
@@ -29,7 +29,7 @@ const getEvents = async(req, res, next) => {
         week.push(date.add(1, 'days').format(format))
     
     try {
-        let events = await dataAccess.getEvents(week, filter, user.id)
+        let events = await dataAccess.getEvents(week, filter, user.username)
         res.end(JSON.stringify(events))
     } catch (error) {
         res.statusCode = 500
@@ -85,7 +85,7 @@ const addKategorija = async (req, res, next) => {
     let kat = req.body
     let user = req.userInfo
     try {
-        await dataAccess.addKategorija({...kat, user: user.id})
+        await dataAccess.addKategorija({...kat, user: user.username})
         res.end()
     } catch (error) {
         res.statusCode = 500
@@ -97,7 +97,7 @@ const addKategorija = async (req, res, next) => {
 const getKategorije = async (req, res, next) => {
     let user = req.userInfo
     try {
-        let kategorije = await dataAccess.getKategorije(user.id)
+        let kategorije = await dataAccess.getKategorije(user.username)
         res.end(JSON.stringify(kategorije))
     } catch (error) {
         res.statusCode = 500
@@ -134,7 +134,7 @@ const searchEvents = async (req, res, next) => {
     let term = req.params.term
     let user = req.userInfo
     try {
-        let events = await dataAccess.searchEvents(term, user.id)
+        let events = await dataAccess.searchEvents(term, user.username)
         res.end(JSON.stringify(events))
     } catch (error) {
         res.statusCode = 500

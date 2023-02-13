@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 
 const startServer = async () => {
     dotenv.config();
+    console.log("ENVIRONMENT:" + process.env.NODE_ENV);
     const app = express()
     await loadAll(app)
     app.listen(4000)

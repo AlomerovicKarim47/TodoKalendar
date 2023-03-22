@@ -2,29 +2,42 @@ import Timetable from 'react-timetable-events'
 import React, { Component } from 'react'
 import {Button, Container, Row, Col} from 'react-bootstrap'
 import Event from './Event'
+import '../css/EventTable.css'
 
 export default class EventTable extends Component {
     
     state = {
-        dani:null
+        dani:[]
+    }
+
+    handleResize = ()=>{
+        let dani = new Map()
+        let windowSize = window.innerWidth;
+        let condition = windowSize > 768;
+        dani['Monday']=condition?'ponedjeljak':'pon'
+        dani['Tuesday']=condition?'utorak':'uto'
+        dani['Wednesday']=condition?'srijeda':'sri'
+        dani['Thursday']=condition?'cetvrtak':'cet'
+        dani['Friday']=condition?'petak':'pet'
+        dani['Saturday']=condition?'subota':'sub'
+        dani['Sunday']=condition?'nedjelja':'ned'
+        this.setState({dani:dani})
     }
 
     componentDidMount(){
-        let dani = new Map()
-        dani['Monday']='ponedjeljak'
-        dani['Tuesday']='utorak'
-        dani['Wednesday']='srijeda'
-        dani['Thursday']='cetvrtak'
-        dani['Friday']='petak'
-        dani['Saturday']='subota'
-        dani['Sunday']='nedjelja'
-        this.setState({dani:dani})
+        window.addEventListener("resize", this.handleResize)
+        this.handleResize()
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener("resize", this.handleResize)
     }
 
     renderDayLabel = (day) => {
         let data = day.split(" ")
         let datum = data[0].split("-")
-        return datum[2] + "/" + datum[1] + "/" + datum[0]  + " (" + this.state.dani[data[1]] + ")"
+        return (window.innerWidth > 768?datum[2] + "/" + datum[1] + "/" + datum[0]:"")  
+        + " (" + this.state.dani[data[1]] + ")"
     }
 
     renderEvent = (event, defaultAttributes, styles) => {
@@ -43,20 +56,15 @@ export default class EventTable extends Component {
     render() {
         return (
             <div>
-                <Container fluid>
-                    <Row>
-                        <Col style={{paddingLeft:'0px', paddingRight: '5px'}}>
-                            <Button block onClick = {() => this.props.onDatumNazad()}>Nazad</Button>
-                        </Col>
-                        <Col style={{paddingRight:'0px', paddingLeft: '5px'}} >
-                            <Button block onClick = {() => this.props.onDatumNaprijed()}>Naprijed</Button>
-                        </Col>
-                        </Row>
-                </Container>
                 
+                <div className = "event-table-buttons">
+                    <Button block onClick = {() => this.props.onDatumNazad()}>Nazad</Button>
+                    <Button block onClick = {() => this.props.onDatumNaprijed()}>Naprijed</Button>
+                </div>
+            
                 <Timetable 
-                    events = {this.props.events}
                     timeLabel = "Vrijeme"
+                    events = {this.props.events}
                     hoursInterval = {[0, 24]}
                     getDayLabel = {this.renderDayLabel}
                     renderEvent = {this.renderEvent}

@@ -1,4 +1,3 @@
-import { Container, Col, Row } from 'react-bootstrap'
 import EventTable from './EventTable'
 import Sidebar from './Sidebar'
 import AddEvent from './AddEvent'
@@ -12,6 +11,7 @@ import ToastAlert from '../components/ToastAlert'
 import Dane from '../components/Dane'
 import Search from '../components/Search'
 import Help from '../components/Help'
+import '../css/Home.css'
 
 export default class Home extends Component {
 
@@ -254,6 +254,20 @@ export default class Home extends Component {
         }
     }
 
+    showSidebar(){
+        let sidebar = document.getElementsByClassName("sidebar-options")[0]
+        let sidebarTL = document.getElementsByClassName("sidebar-toggle-label")[0]
+        let sidebarDisp = sidebar.style.display
+        if(sidebarDisp==="none" || !sidebarDisp){
+            sidebar.style.display="flex"
+            sidebarTL.innerHTML = "<"
+        }
+        else{
+            sidebar.style.display="none"
+            sidebarTL.innerHTML = ">"
+        }
+    }
+
     render() {
         if (!this.props.userInfo)return(<div>Unauthorized.</div>)
         return (
@@ -316,10 +330,10 @@ export default class Home extends Component {
                     eventToEdit = {this.state.eventToEdit}
                     updateKategorije = {() => this.updateKategorije()}
                     />
-                <Container fluid>
-                    <Row>
-                        <Col xs = {2}>
-                            <Sidebar 
+                <div className="home-whole">
+                    <div className = "sidebar-wrapper">
+                        <div className="sidebar-options">
+                            <Sidebar
                                 openModal = {(modal) => this.openModal(modal)}
                                 onDateChange = {(date) => this.onDateChange(date)}
                                 enableDelete = {this.state.selectedEvent?true:false}
@@ -332,19 +346,22 @@ export default class Home extends Component {
                                 filters = {this.state.filters}
                                 kategorije = {this.state.kategorije}
                             />
-                        </Col>
-                        <Col style = {{paddingLeft:'0px'}}>                        
-                            <EventTable events = {this.state.events}
-                                onDatumNaprijed = {() => this.onDatumNaprijed()}
-                                onDatumNazad = {() => this.onDatumNazad()}
-                                onSelectEvent = {(id) => this.onSelectEvent(id)}
-                                onCheck = {(id) => this.onCheck(id)}
-                                eventToGoTo={this.props.eventToGoTo}
-                                clearEvent = {() => this.props.clearEvent()}
-                            />
-                        </Col>
-                    </Row>
-                </Container>
+                        </div>
+                        <div className = "side-bar-toggle" onClick = {()=>this.showSidebar()}>
+                            <div className = "sidebar-toggle-label">{">"}</div>
+                        </div>
+                    </div>
+                    <div className = "event-table-wrapper">
+                        <EventTable events = {this.state.events}
+                            onDatumNaprijed = {() => this.onDatumNaprijed()}
+                            onDatumNazad = {() => this.onDatumNazad()}
+                            onSelectEvent = {(id) => this.onSelectEvent(id)}
+                            onCheck = {(id) => this.onCheck(id)}
+                            eventToGoTo={this.props.eventToGoTo}
+                            clearEvent = {() => this.props.clearEvent()}
+                        />
+                    </div>
+                </div>
             </div>
         )
     }

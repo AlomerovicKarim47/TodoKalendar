@@ -1,6 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .btn{
     margin-left: 0px;
     margin-right: 0px;
+    background-color: #34495e;
+    border: none;
+}
+
+.btn:focus{
+    background-color: #34495e;
+    border: none;
+    box-shadow: none;
+}
+
+.rw-state-selected{
+    background-color: #34495e;
 }
 
 .modal-content{
@@ -16,22 +34,13 @@
     margin-bottom: 10px;
 }
 
-.styles_time_table_wrapper__1-rtp{
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.App{
-    padding-top: 10px;
-}
-
-.styles_hour__EXCif{
+/* .styles_hour__EXCif{
     background-color: #70b1fc;
 }
 
 .styles_day_title__1y-BE{
     background-color: #007bff
-}
+} */
 
 .errormsg{
     color:'red';

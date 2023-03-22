@@ -1,0 +1,30 @@
+.sidebar-options{
+    background-color: white;
+    padding: 0.5rem 0;
+    display: none;
+    width: 300px;
+    overflow-y:auto;
+    overflow-x: hidden;
+    /* box-shadow: -1px 0px 8px 5px rgb(87, 87, 87);; */
+}
+
+.calendar-wrapper{
+    padding:0 0.5rem;
+}
+
+.sidebar-buttons .btn{
+    margin: 0;
+    border-radius: 0;
+    background-color: white;
+    color: black;
+}
+
+.sidebar-buttons .btn:disabled{
+    opacity: 100%;
+    color: gray;
+}
+
+.sidebar-buttons .btn:hover{
+    background-color: #34495e;
+    color: white;
+}

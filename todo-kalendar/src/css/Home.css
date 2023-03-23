@@ -8,6 +8,10 @@
     height: 100vh;
 }
 
+.event-table-wrapper{
+    padding: 0 10px;
+}
+
 .side-bar-toggle{
     cursor: pointer;
     align-self: center;

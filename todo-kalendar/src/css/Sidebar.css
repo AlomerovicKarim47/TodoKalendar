@@ -12,7 +12,7 @@
     padding:0 0.5rem;
 }
 
-.sidebar-buttons .btn{
+.sidebar-buttons .btn, .sidebar-buttons .btn:focus{
     margin: 0;
     border-radius: 0;
     background-color: white;

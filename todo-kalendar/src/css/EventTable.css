@@ -33,19 +33,33 @@
 }
 .styles_day_title__1y-BE{
     min-height:45px;
+    cursor: default;
 }
 
-/* .styles_day_title__1y-BE::after{
-    content: attr(data-content);
-    height: 40px;
-    width:200px;
+.styles_day_title__1y-BE .day-label{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.day-label-expansion{
+    background-color: #22303d;
     z-index: 50;
     position: absolute;
-    top:-40000px;
-    background-color: #34495e;
-    
+    top: 0;
+    height: 130%;
+    padding: 0 0.5rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.styles_day_title__1y-BE:hover::after{
-    top:40px;
-} */
+@media (max-width: 1450px){
+    .styles_day_title__1y-BE div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+

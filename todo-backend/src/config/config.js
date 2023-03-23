@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 dotenv.config();
+console.log("IMPORTED");
 const CONFIG  = {
     db:{
         NAME: "todokalendar",
